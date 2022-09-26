@@ -5,3 +5,14 @@
 // the print and sum visitors for reference.
 
 // WRITEME
+void MaxVisitor::visitNode(Node* node) {
+
+    if (isInTopLevel) {
+        max = node->value;
+        isInTopLevel = false;
+    } else {
+        if (node->value > max) max = node->value;
+    }
+    node->visit_children(this);
+    
+}
